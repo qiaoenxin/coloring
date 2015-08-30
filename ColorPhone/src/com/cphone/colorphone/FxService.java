@@ -63,8 +63,8 @@ public class FxService extends Service
         //调整悬浮窗显示的停靠位置为左侧置顶
         wmParams.gravity = Gravity.LEFT | Gravity.TOP;       
         // 以屏幕左上角为原点，设置x、y初始值，相对于gravity
-        wmParams.x = 0;
-        wmParams.y = 0;
+        wmParams.x = 40;
+        wmParams.y = 300;
 
         //设置悬浮窗口长宽数据  
         wmParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -115,8 +115,8 @@ public class FxService extends Service
 			@Override
 			public void onClick(View v) 
 			{
-				// TODO Auto-generated method stub
-				Toast.makeText(FxService.this, "onClick", Toast.LENGTH_SHORT).show();
+				//移除悬浮窗口
+				stopSelf();
 			}
 		});
 	}

@@ -4,16 +4,80 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_start" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/ring_one" />
+        
+        <EditText
+            android:id="@+id/ring_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="number"
+            android:ems="10"
+            android:text="1111" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/ring_box" />
+        <EditText
+            android:id="@+id/ring_box"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="number"
+            android:ems="10"
+            android:text="2222" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/ring_one_adv" />
+        <EditText
+            android:id="@+id/ring_one_adv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="number"
+            android:ems="10"
+            android:text="3333" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/close"
+        android:id="@+id/ring_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_close" />
+        android:layout_gravity="center"
+        android:text="@string/ring_set" />
 
 </LinearLayout>

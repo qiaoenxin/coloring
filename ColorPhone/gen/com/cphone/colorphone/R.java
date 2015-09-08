@@ -15,10 +15,13 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int close=0x7f060003;
-        public static final int fload_id=0x7f060001;
-        public static final int start=0x7f060002;
+        public static final int fload_id=0x7f060002;
+        public static final int ring_box=0x7f060004;
+        public static final int ring_one=0x7f060003;
+        public static final int ring_one_adv=0x7f060005;
+        public static final int ring_set=0x7f060006;
         public static final int webView=0x7f060000;
+        public static final int win_bar=0x7f060001;
     }
     public static final class layout {
         public static final int float_window=0x7f030000;
@@ -28,6 +31,10 @@ public final class R {
         public static final int app_name=0x7f040000;
         public static final int main_close=0x7f040002;
         public static final int main_start=0x7f040001;
+        public static final int ring_box=0x7f040004;
+        public static final int ring_one=0x7f040003;
+        public static final int ring_one_adv=0x7f040005;
+        public static final int ring_set=0x7f040006;
     }
     public static final class style {
         /** 

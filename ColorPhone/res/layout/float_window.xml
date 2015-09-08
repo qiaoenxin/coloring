@@ -6,8 +6,17 @@
 
  <WebView
      android:id="@+id/webView"
-     android:layout_width="305dp"
-     android:layout_height="195dp"
+     android:layout_width="match_parent"
+     android:layout_height="400dp"
+     android:layout_marginLeft="0dp"
+     android:layout_marginTop="0dp"
+      />
+ <Button
+     android:id="@+id/win_bar"
+     android:layout_width="260dp"
+     android:layout_height="30dp"
+     android:layout_alignLeft="@+id/webView"
+     android:background="#00000000"
       />
  <Button
      android:id="@+id/fload_id"

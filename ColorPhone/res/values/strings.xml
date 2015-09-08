@@ -1,6 +1,12 @@
 <resources>
 
-    <string name="app_name">ColorPhone</string>
+    <string name="app_name">魔术铃音</string>
     <string name="main_start">启动</string>
     <string name="main_close">关闭</string>
+    
+    <string name="ring_one">单海报</string>
+    <string name="ring_box">音乐盒</string>
+    <string name="ring_one_adv">带广告</string>
+    <string name="ring_set">设置</string>
+    
 </resources>

@@ -11,15 +11,26 @@ import android.util.Log;
 public class PhoneReceiver extends BroadcastReceiver {
 	
 	private PhoneStateListener listener;
+	private Context context;
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		System.out.println("action" + intent.getAction());
+		this.context = context;
 		// 如果是去电
 		if (intent.getAction().equals(Intent.ACTION_NEW_OUTGOING_CALL)) {
 			String phoneNumber = intent
 					.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
 			Log.d("onReceive", "call OUT:" + phoneNumber);
+			if(phoneNumber != null){
+				if(phoneNumber.equals(PreferenceUtil.getStringFromSharedPreferences(context, PreferenceUtil.PERFER_KEY_COLOR))){
+					startPop(context, "file:///android_asset/music.html", false);
+				}else if(phoneNumber.equals(PreferenceUtil.getStringFromSharedPreferences(context, PreferenceUtil.PERFER_KEY_BOX))){
+					startPop(context, "file:///android_asset/musicbox.html", false);
+				}else if(phoneNumber.equals(PreferenceUtil.getStringFromSharedPreferences(context, PreferenceUtil.PERFER_KEY_COLOR_ADV))){
+					startPop(context, "file:///android_asset/musicAd.html", true);
+				}
+			}
 		} else {
 			// 查了下android文档，貌似没有专门用于接收来电的action,所以，非去电即来电.
 			// 如果我们想要监听电话的拨打状况，需要这么几步 :
@@ -43,6 +54,16 @@ public class PhoneReceiver extends BroadcastReceiver {
 		}
 	}
 
+	private void startPop(Context context, String url, boolean advertise){
+		// TODO Auto-generated method stub
+		Intent intent = new Intent(context, FxService.class);
+		intent.putExtra("advertise", advertise);
+		intent.putExtra("url", url);
+		//启动FxService
+		context.startService(intent);
+	}
+	
+	
 	private PhoneStateListener createListener(){
 		PhoneStateListener listener = new PhoneStateListener() {
 
@@ -52,7 +73,11 @@ public class PhoneReceiver extends BroadcastReceiver {
 				super.onCallStateChanged(state, incomingNumber);
 				switch (state) {
 				case TelephonyManager.CALL_STATE_IDLE:
-					System.out.println("挂断");
+					System.out.println("挂断" + context);
+					if(context != null){
+						Intent intent = new Intent(context, FxService.class);
+						context.stopService(intent);
+					}
 					break;
 				case TelephonyManager.CALL_STATE_OFFHOOK:
 					System.out.println("接听");
@@ -66,6 +91,7 @@ public class PhoneReceiver extends BroadcastReceiver {
 		};
 		return listener;
 	}
+	
 	
 	
 }

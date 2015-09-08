@@ -6,47 +6,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity 
 {
+	private EditText ringOne;
+	private EditText ringBox;
+	private EditText ringOneAdv;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		//获取启动按钮
-        Button start = (Button)findViewById(R.id.start);
-        //获取移除按钮
-        Button remove = (Button)findViewById(R.id.close);
-        //绑定监听
-        start.setOnClickListener(new OnClickListener() 
-        {
-			
+        Button button = (Button) findViewById(R.id.ring_set);
+        ringOne = (EditText) findViewById(R.id.ring_one);
+        ringBox = (EditText) findViewById(R.id.ring_box);
+        ringOneAdv = (EditText) findViewById(R.id.ring_one_adv);
+        button.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) 
-			{
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(MainActivity.this, FxService.class);
-				//启动FxService
-				startService(intent);
-				finish();
+			public void onClick(View arg0) {
+				PreferenceUtil.putStringFromSharedPreferences(MainActivity.this, PreferenceUtil.PERFER_KEY_COLOR, ringOne.getText().toString());
+				PreferenceUtil.putStringFromSharedPreferences(MainActivity.this, PreferenceUtil.PERFER_KEY_BOX, ringBox.getText().toString());
+				PreferenceUtil.putStringFromSharedPreferences(MainActivity.this, PreferenceUtil.PERFER_KEY_COLOR_ADV, ringOneAdv.getText().toString());
+				Toast.makeText(MainActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
 			}
 		});
-        
-        remove.setOnClickListener(new OnClickListener() 
-        {
-			
-			@Override
-			public void onClick(View v) 
-			{
-				//uninstallApp("com.phicomm.hu");
-				Intent intent = new Intent(MainActivity.this, FxService.class);
-				//终止FxService
-				stopService(intent);
-			}
-		});
-        
     }
 }
